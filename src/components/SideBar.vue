@@ -8,6 +8,7 @@
         </div>
       </div>
     </ul>
+    <button @click="closeSideBar">X</button>
   </aside>
 </template>
 
@@ -37,7 +38,12 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    closeSideBar() {
+      this.$emit("toggle-sidebar");
+      this.isclicked != this.isclicked;
+    },
+  },
 };
 </script>
 

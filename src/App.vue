@@ -1,9 +1,12 @@
 <template>
   <div>
-    <button class="menu-icon" @click="toogleSideBarState">
+    <button class="menu-icon" @click="toggleSideBarState">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
-    <side-bar :isclicked="SideBarIsOpen"></side-bar>
+    <side-bar
+      @toggle-sidebar="toggleSideBarState"
+      :isclicked="SideBarIsOpen"
+    ></side-bar>
   </div>
 </template>
 
@@ -17,10 +20,10 @@ export default {
     };
   },
   methods: {
-    toogleSideBarState() {
-      console.log(this.SideBarIsOpen);
+    toggleSideBarState() {
+      console.log("sideBarOpen? : " + this.SideBarIsOpen);
       this.SideBarIsOpen = !this.SideBarIsOpen;
-      console.log(this.SideBarIsOpen);
+      console.log("sideBarOpen? : " + this.SideBarIsOpen);
     },
   },
   components: {
