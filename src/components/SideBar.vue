@@ -6,17 +6,17 @@
       </button>
     </div>
     <ul v-if="isclicked" class="item-container">
-      <div v-for="item in items" :key="item.name" class="item">
-        <li>{{ item.name }}</li>
-        <div class="item-icon">
-          <img src="../assets/chevron-down-outline.svg" alt="" />
-        </div>
-      </div>
+      <sidebar-item
+        v-for="item in items"
+        :key="item.name"
+        :item="item"
+      ></sidebar-item>
     </ul>
   </aside>
 </template>
 
 <script>
+import SidebarItem from "./SidebarItem.vue";
 export default {
   props: { isclicked: Boolean, items: Array },
   emits: ["toggle-sidebar"],
@@ -31,6 +31,7 @@ export default {
       this.isclicked != this.isclicked;
     },
   },
+  components: { SidebarItem },
 };
 </script>
 
@@ -64,7 +65,6 @@ ul {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-
 .item-icon {
   width: 24px;
 }
