@@ -6,7 +6,7 @@
       </button>
     </div>
     <ul v-if="isclicked" class="item-container">
-      <div v-for="item in itemsList" :key="item.name" class="item">
+      <div v-for="item in items" :key="item.name" class="item">
         <li>{{ item.name }}</li>
         <div class="item-icon">
           <img src="../assets/chevron-down-outline.svg" alt="" />
@@ -18,28 +18,10 @@
 
 <script se>
 export default {
-  props: { isclicked: Boolean },
+  props: { isclicked: Boolean, items: Array },
   data() {
     return {
       isOpen: false,
-      itemsList: [
-        {
-          name: "Home",
-          children: [],
-        },
-        {
-          name: "About",
-          children: [],
-        },
-        {
-          name: "Contact",
-          children: [],
-        },
-        {
-          name: "Settings",
-          children: [],
-        },
-      ],
     };
   },
   methods: {

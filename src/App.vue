@@ -6,6 +6,7 @@
     <side-bar
       @toggle-sidebar="toggleSideBarState"
       :isclicked="SideBarIsOpen"
+      :items="itemsList"
     ></side-bar>
   </div>
 </template>
@@ -17,6 +18,24 @@ export default {
   data() {
     return {
       SideBarIsOpen: false,
+      itemsList: [
+        {
+          name: "Home",
+          children: [],
+        },
+        {
+          name: "About",
+          children: [],
+        },
+        {
+          name: "Contact",
+          children: [],
+        },
+        {
+          name: "Settings",
+          children: [],
+        },
+      ],
     };
   },
   methods: {
