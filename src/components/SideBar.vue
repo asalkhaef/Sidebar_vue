@@ -16,9 +16,10 @@
   </aside>
 </template>
 
-<script se>
+<script>
 export default {
   props: { isclicked: Boolean, items: Array },
+  emits: ["toggle-sidebar"],
   data() {
     return {
       isOpen: false,
