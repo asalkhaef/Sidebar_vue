@@ -36,18 +36,6 @@ export default {
 </script>
 
 <style scoped>
-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
-ul {
-  list-style-type: none;
-}
 .sidebar-container {
   display: flex;
   flex-direction: column;

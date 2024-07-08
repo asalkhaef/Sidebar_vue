@@ -4,6 +4,13 @@
     <div class="item-icon">
       <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
     </div>
+    <ul v-if="item.children && item.children.length" class="children">
+      <sidebar-item
+        v-for="child in item.children"
+        :key="child.name"
+        :item="child"
+      ></sidebar-item>
+    </ul>
   </div>
 </template>
   
