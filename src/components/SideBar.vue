@@ -1,5 +1,10 @@
 <template>
   <aside class="sidebar-container" :class="{ active: isclicked }">
+    <div class="sidebar-topcontainer">
+      <button @click="closeSideBar" class="item-icon close-btn">
+        <img src="../assets/close-outline.svg" alt="sidebar icon" />
+      </button>
+    </div>
     <ul v-if="isclicked" class="item-container">
       <div v-for="item in itemsList" :key="item.name" class="item">
         <li>{{ item.name }}</li>
@@ -8,7 +13,6 @@
         </div>
       </div>
     </ul>
-    <button @click="closeSideBar">X</button>
   </aside>
 </template>
 
@@ -99,11 +103,21 @@ ul {
   padding: 10px;
   transition: all 0.2s;
 }
+.close-btn:hover,
 .item:hover {
   background-color: rgb(137, 180, 182);
   cursor: pointer;
 }
 .active {
   left: 0;
+}
+.sidebar-topcontainer {
+  width: inherit;
+  display: flex;
+  justify-content: flex-end;
+}
+.close-btn {
+  margin: 10px;
+  border-radius: 50%;
 }
 </style>
