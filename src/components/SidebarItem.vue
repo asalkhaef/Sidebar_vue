@@ -6,6 +6,7 @@
         @click="toggleChildren"
         v-if="item.children.length"
         class="item-icon"
+        :class="{ rotated: showChildren }"
       >
         <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
       </div>
@@ -46,15 +47,16 @@ export default {
   justify-content: space-between;
   border-radius: 10px;
   padding: 10px;
-  transition: all 0.2s;
 }
 .item:hover {
   background-color: rgb(137, 180, 182);
   cursor: pointer;
+  transition: 0.2s ease;
 }
 .item-icon {
   width: 24px;
   height: 24px;
+  transition: 0.3 ease;
 }
 .item-icon img {
   margin-top: 2px;
@@ -62,5 +64,9 @@ export default {
 
 .children {
   padding-left: 20px;
+  margin-top: 5px;
+}
+.rotated {
+  transform: rotate(-90deg);
 }
 </style>
