@@ -11,16 +11,18 @@
         <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
       </div>
     </li>
-    <ul
-      v-if="item.children && item.children.length && this.showChildren"
-      class="children"
-    >
-      <sidebar-item
-        v-for="child in item.children"
-        :key="child.name"
-        :item="child"
-      ></sidebar-item>
-    </ul>
+    <transition name="fade">
+      <ul
+        v-if="item.children && item.children.length && this.showChildren"
+        class="children"
+      >
+        <sidebar-item
+          v-for="child in item.children"
+          :key="child.name"
+          :item="child"
+        ></sidebar-item>
+      </ul>
+    </transition>
   </div>
 </template>
   
@@ -69,5 +71,20 @@ export default {
 .rotated {
   transform: rotate(-90deg);
   transition: all 0.2s ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  max-height: 0;
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave {
+  max-height: 200px; /* You can adjust this value as needed */
+  opacity: 1;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
 </style>
