@@ -2,11 +2,18 @@
   <div>
     <li class="item">
       <span>{{ item.name }}</span>
-      <div v-if="item.children.length" class="item-icon">
+      <div
+        @click="toggleChildren"
+        v-if="item.children.length"
+        class="item-icon"
+      >
         <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
       </div>
     </li>
-    <ul v-if="item.children && item.children.length" class="children">
+    <ul
+      v-if="item.children && item.children.length && this.showChildren"
+      class="children"
+    >
       <sidebar-item
         v-for="child in item.children"
         :key="child.name"
@@ -19,6 +26,16 @@
 <script>
 export default {
   props: { item: Object },
+  data() {
+    return {
+      showChildren: false,
+    };
+  },
+  methods: {
+    toggleChildren() {
+      this.showChildren = !this.showChildren;
+    },
+  },
 };
 </script>
   
