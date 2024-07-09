@@ -2,7 +2,7 @@
   <div>
     <li class="item">
       <span>{{ item.name }}</span>
-      <div class="item-icon">
+      <div v-if="item.children.length" class="item-icon">
         <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
       </div>
     </li>
