@@ -68,16 +68,7 @@ export default {
   margin-top: 20px;
   width: inherit;
 }
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 10px;
-  padding: 10px;
-  transition: all 0.2s;
-}
-.close-btn:hover,
-.item:hover {
+.close-btn:hover {
   background-color: rgb(137, 180, 182);
   cursor: pointer;
 }

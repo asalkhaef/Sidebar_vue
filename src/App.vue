@@ -16,48 +16,6 @@ import SideBar from "./components/SideBar.vue";
 
 export default {
   data() {
-    // itemsList: [
-    //     {
-    //       name: "Home",
-    //       children: [],
-    //     },
-    //     {
-    //       name: "About",
-    //       children: [
-    //         {
-    //           name: "Team",
-    //           children: [],
-    //         },
-    //         {
-    //           name: "Company",
-    //           children: [],
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       name: "Contact",
-    //       children: [],
-    //     },
-    //     {
-    //       name: "Settings",
-    //       children: [
-    //         {
-    //           name: "Profile",
-    //           children: [],
-    //         },
-    //         {
-    //           name: "Security",
-    //           children: [
-    //             {
-    //               name: "secChild",
-    //               children: [],
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //   ],
-
     return {
       SideBarIsOpen: false,
       itemsList: [
@@ -67,7 +25,16 @@ export default {
         },
         {
           name: "About",
-          children: [],
+          children: [
+            {
+              name: "Team",
+              children: [],
+            },
+            {
+              name: "Company",
+              children: [],
+            },
+          ],
         },
         {
           name: "Contact",
@@ -75,9 +42,41 @@ export default {
         },
         {
           name: "Settings",
-          children: [],
+          children: [
+            {
+              name: "Profile",
+              children: [],
+            },
+            {
+              name: "Security",
+              children: [
+                {
+                  name: "secChild",
+                  children: [],
+                },
+              ],
+            },
+          ],
         },
       ],
+      // itemsList: [
+      //   {
+      //     name: "Home",
+      //     children: [],
+      //   },
+      //   {
+      //     name: "About",
+      //     children: [],
+      //   },
+      //   {
+      //     name: "Contact",
+      //     children: [],
+      //   },
+      //   {
+      //     name: "Settings",
+      //     children: [],
+      //   },
+      // ],
     };
   },
   methods: {
