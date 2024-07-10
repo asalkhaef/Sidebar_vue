@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <button class="menu-icon" @click="toggleSideBarState">
+  <div ref="targetElement">
+    <button class="menu-icon" @click="openSideBarState">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
     <side-bar
-      @toggle-sidebar="toggleSideBarState"
+      @toggle-sidebar="closeSideBarState"
       :isclicked="SideBarIsOpen"
       :items="itemsList"
     ></side-bar>
@@ -59,32 +59,24 @@ export default {
           ],
         },
       ],
-      // itemsList: [
-      //   {
-      //     name: "Home",
-      //     children: [],
-      //   },
-      //   {
-      //     name: "About",
-      //     children: [],
-      //   },
-      //   {
-      //     name: "Contact",
-      //     children: [],
-      //   },
-      //   {
-      //     name: "Settings",
-      //     children: [],
-      //   },
-      // ],
     };
   },
   methods: {
-    toggleSideBarState() {
-      console.log("sideBarOpen? : " + this.SideBarIsOpen);
-      this.SideBarIsOpen = !this.SideBarIsOpen;
-      console.log("sideBarOpen? : " + this.SideBarIsOpen);
+    openSideBarState() {
+      this.SideBarIsOpen = true;
     },
+    closeSideBarState() {
+      this.SideBarIsOpen = false;
+    },
+    handleClickOutside(event) {
+      if (!this.$refs.targetElement.contains(event.target)) {
+        console.log(this.$refs.targetElement);
+        this.closeSideBarState();
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
   },
   components: {
     SideBar,

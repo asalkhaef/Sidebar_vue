@@ -22,15 +22,15 @@ export default {
   emits: ["toggle-sidebar"],
   data() {
     return {
-      isOpen: false,
+      // isOpen: false,
     };
   },
   methods: {
     closeSideBar() {
       this.$emit("toggle-sidebar");
-      this.isclicked != this.isclicked;
     },
   },
+
   components: { SidebarItem },
 };
 </script>
