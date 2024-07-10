@@ -55,6 +55,7 @@ export default {
   transition: 0.2s ease;
 }
 .item-icon {
+  transform: rotate(-90deg);
   width: 24px;
   height: 24px;
   transition: all 0.2s ease;
@@ -68,7 +69,7 @@ export default {
   margin-top: 5px;
 }
 .rotated {
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   transition: all 0.2s ease;
 }
 

@@ -1,11 +1,12 @@
 <template>
-  <div ref="targetElement">
-    <button class="menu-icon" @click="openSideBarState">
+  <div>
+    <button class="menu-icon" @click.stop="openSideBar" id="open-btn">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
     <side-bar
-      @toggle-sidebar="closeSideBarState"
-      :isclicked="SideBarIsOpen"
+      @close-sidebar="closeSideBar"
+      @open-sidebar="openSideBar"
+      :isclicked="isOpen"
       :items="itemsList"
     ></side-bar>
   </div>
@@ -17,7 +18,7 @@ import SideBar from "./components/SideBar.vue";
 export default {
   data() {
     return {
-      SideBarIsOpen: false,
+      isOpen: false,
       itemsList: [
         {
           name: "Home",
@@ -62,21 +63,12 @@ export default {
     };
   },
   methods: {
-    openSideBarState() {
-      this.SideBarIsOpen = true;
+    openSideBar() {
+      this.isOpen = true;
     },
-    closeSideBarState() {
-      this.SideBarIsOpen = false;
+    closeSideBar() {
+      this.isOpen = false;
     },
-    handleClickOutside(event) {
-      if (!this.$refs.targetElement.contains(event.target)) {
-        console.log(this.$refs.targetElement);
-        this.closeSideBarState();
-      }
-    },
-  },
-  mounted() {
-    document.addEventListener("click", this.handleClickOutside);
   },
   components: {
     SideBar,

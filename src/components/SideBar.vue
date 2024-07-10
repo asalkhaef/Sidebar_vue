@@ -1,5 +1,9 @@
-<template>
-  <aside class="sidebar-container" :class="{ active: isclicked }">
+<template >
+  <aside
+    class="sidebar-container"
+    :class="{ active: isclicked }"
+    ref="targetElement"
+  >
     <div class="sidebar-topcontainer">
       <button @click="closeSideBar" class="item-icon close-btn">
         <img src="../assets/close-outline.svg" alt="sidebar icon" />
@@ -19,7 +23,7 @@
 import SidebarItem from "./SidebarItem.vue";
 export default {
   props: { isclicked: Boolean, items: Array },
-  emits: ["toggle-sidebar"],
+  emits: ["close-sidebar"],
   data() {
     return {
       // isOpen: false,
@@ -27,10 +31,24 @@ export default {
   },
   methods: {
     closeSideBar() {
-      this.$emit("toggle-sidebar");
+      this.$emit("close-sidebar");
+    },
+    handleClickOutside(event) {
+      if (this.isclicked) {
+        if (this.$refs.targetElement.contains(event.target) === false) {
+          this.closeSideBar();
+        }
+      } else {
+        console.log(event.target);
+        if (event.target.id == "open-btn") {
+          this.$emit("open-sidebar");
+        }
+      }
     },
   },
-
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+  },
   components: { SidebarItem },
 };
 </script>
