@@ -1,9 +1,8 @@
 <template>
   <div>
-    <li class="item">
+    <li class="item" @click="toggleChildren">
       <span>{{ item.name }}</span>
       <div
-        @click="toggleChildren"
         v-if="item.children.length"
         class="item-icon"
         :class="{ rotated: showChildren }"
