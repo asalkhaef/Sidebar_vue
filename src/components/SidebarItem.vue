@@ -77,13 +77,14 @@ export default {
 .fade-leave-active {
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   max-height: 0;
   opacity: 0;
 }
 .fade-enter-to,
 .fade-leave {
-  max-height: 200px; /* You can adjust this value as needed */
+  max-height: 200px;
   opacity: 1;
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
