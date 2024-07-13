@@ -9,7 +9,7 @@
         <img src="../assets/close-outline.svg" alt="sidebar icon" />
       </button>
     </the-header>
-    <ul v-if="modelValue" class="item-container">
+    <ul class="item-container">
       <sidebar-item
         v-for="item in items"
         :key="item.name"
@@ -43,10 +43,6 @@ export default {
         if (this.$refs.targetElement.contains(event.target) === false) {
           this.closeSideBar();
         }
-      } else {
-        if (event.target.id == "open-btn") {
-          this.$emit("update:modelValue", true);
-        }
       }
     },
   },
@@ -75,6 +71,7 @@ export default {
   z-index: 99;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  user-select: none;
 }
 .item-icon {
   width: 24px;

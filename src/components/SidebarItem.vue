@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div
+    class="menu-item"
+    ref="childrenContainer"
+    :style="{
+      height: maxHeight === 'auto' ? maxHeight : `${maxHeight}px`,
+    }"
+  >
     <li class="item" @click="toggleChildren(item)">
       <span>{{ item.name }}</span>
       <div
@@ -16,8 +22,6 @@
         childrenOpen: this.showChildren,
       }"
       class="item-container"
-      :style="{ maxHeight: showChildren ? `${maxHeight}px` : '0px' }"
-      ref="childrenContainer"
     >
       <sidebar-item
         v-for="child in item.children"
@@ -40,33 +44,40 @@ export default {
   methods: {
     toggleChildren(item) {
       if (item.children.length) {
-        if (!this.showChildren) {
-          this.calculateHeight();
-        } else {
-          this.maxHeight = 0;
-        }
         this.showChildren = !this.showChildren;
+        if (this.showChildren) {
+          this.openChildren();
+        } else {
+          this.closeChildren();
+        }
       }
     },
-    calculateHeight() {
-      this.$nextTick(() => {
-        const container = this.$refs.childrenContainer;
-        this.maxHeight = this.getTotalHeight(container);
-      });
+    openChildren() {
+      const container = this.$refs.childrenContainer;
+      this.maxHeight = container.scrollHeight;
+      const self = this;
+      setTimeout(() => {
+        self.maxHeight = "auto";
+      }, 300);
     },
-    getTotalHeight(element) {
-      let totalHeight = element.scrollHeight;
-      const childContainers = element.querySelectorAll(".item-container");
-      childContainers.forEach((child) => {
-        totalHeight += child.scrollHeight;
-      });
-      return totalHeight;
+    closeChildren() {
+      const container = this.$refs.childrenContainer;
+      this.maxHeight = container.scrollHeight;
+      const self = this;
+      setTimeout(() => {
+        self.maxHeight = "0";
+      }, 0);
     },
   },
 };
 </script>
   
   <style scoped>
+.menu-item {
+  min-height: 42px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
 .item {
   display: flex;
   align-items: center;
