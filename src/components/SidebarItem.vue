@@ -41,16 +41,15 @@ export default {
       maxHeight: 0,
     };
   },
+  watch: {
+    showChildren() {
+      if (this.showChildren) this.openChildren();
+      else this.closeChildren();
+    },
+  },
   methods: {
     toggleChildren(item) {
-      if (item.children.length) {
-        this.showChildren = !this.showChildren;
-        if (this.showChildren) {
-          this.openChildren();
-        } else {
-          this.closeChildren();
-        }
-      }
+      if (item.children.length) this.showChildren = !this.showChildren;
     },
     openChildren() {
       const container = this.$refs.childrenContainer;
