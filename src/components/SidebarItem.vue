@@ -15,6 +15,9 @@
         childrenClose: item.children && item.children.length,
         childrenOpen: this.showChildren,
       }"
+      class="item-container"
+      :style="{ maxHeight: showChildren ? `${maxHeight}px` : '0px' }"
+      ref="childrenContainer"
     >
       <sidebar-item
         v-for="child in item.children"
@@ -31,13 +34,33 @@ export default {
   data() {
     return {
       showChildren: false,
+      maxHeight: 0,
     };
   },
   methods: {
     toggleChildren(item) {
       if (item.children.length) {
+        if (!this.showChildren) {
+          this.calculateHeight();
+        } else {
+          this.maxHeight = 0;
+        }
         this.showChildren = !this.showChildren;
       }
+    },
+    calculateHeight() {
+      this.$nextTick(() => {
+        const container = this.$refs.childrenContainer;
+        this.maxHeight = this.getTotalHeight(container);
+      });
+    },
+    getTotalHeight(element) {
+      let totalHeight = element.scrollHeight;
+      const childContainers = element.querySelectorAll(".item-container");
+      childContainers.forEach((child) => {
+        totalHeight += child.scrollHeight;
+      });
+      return totalHeight;
     },
   },
 };
@@ -66,14 +89,15 @@ export default {
   margin-top: 2px;
 }
 .childrenClose {
-  height: 0;
+  /* height: 0; */
   padding-left: 20px;
   margin-top: 5px;
   overflow: hidden;
-  transition: height 0.3s ease-out;
+  transition: max-height 0.2s ease;
 }
 .childrenOpen {
-  height: 180px;
+  /* height: auto; */
+  transition: max-height 0.2s ease;
   overflow: hidden;
 }
 .rotated {

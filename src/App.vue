@@ -31,7 +31,7 @@ export default {
               name: "Company",
               children: [
                 {
-                  name: "Farzazin",
+                  name: "Farazin",
                   children: [],
                 },
                 {
@@ -57,7 +57,7 @@ export default {
               name: "Security",
               children: [
                 {
-                  name: "secChild",
+                  name: "Change Password",
                   children: [],
                 },
               ],
