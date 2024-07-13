@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li class="item" @click="toggleChildren">
+    <li class="item" @click="toggleChildren(item)">
       <span>{{ item.name }}</span>
       <div
         v-if="item.children.length"
@@ -34,8 +34,10 @@ export default {
     };
   },
   methods: {
-    toggleChildren() {
-      this.showChildren = !this.showChildren;
+    toggleChildren(item) {
+      if (item.children.length) {
+        this.showChildren = !this.showChildren;
+      }
     },
   },
 };
@@ -71,7 +73,8 @@ export default {
   transition: height 0.3s ease-out;
 }
 .childrenOpen {
-  height: 150px;
+  height: 180px;
+  overflow: hidden;
 }
 .rotated {
   transform: rotate(0deg);
