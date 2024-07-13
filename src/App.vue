@@ -29,7 +29,16 @@ export default {
             },
             {
               name: "Company",
-              children: [],
+              children: [
+                {
+                  name: "Farzazin",
+                  children: [],
+                },
+                {
+                  name: "Novaday",
+                  children: [],
+                },
+              ],
             },
           ],
         },

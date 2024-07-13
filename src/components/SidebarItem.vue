@@ -11,8 +11,10 @@
       </div>
     </li>
     <ul
-      v-if="item.children && item.children.length && this.showChildren"
-      class="children"
+      :class="{
+        childrenClose: item.children && item.children.length,
+        childrenOpen: this.showChildren,
+      }"
     >
       <sidebar-item
         v-for="child in item.children"
@@ -61,11 +63,15 @@ export default {
 .item-icon img {
   margin-top: 2px;
 }
-
-.children {
+.childrenClose {
+  height: 0;
   padding-left: 20px;
   margin-top: 5px;
-  transition: height 0.5s ease-out;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+}
+.childrenOpen {
+  height: 150px;
 }
 .rotated {
   transform: rotate(0deg);

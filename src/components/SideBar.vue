@@ -4,11 +4,11 @@
     :class="{ active: modelValue }"
     ref="targetElement"
   >
-    <div class="sidebar-topcontainer">
+    <the-header>
       <button @click="closeSideBar" class="item-icon close-btn">
         <img src="../assets/close-outline.svg" alt="sidebar icon" />
       </button>
-    </div>
+    </the-header>
     <ul v-if="modelValue" class="item-container">
       <sidebar-item
         v-for="item in items"
@@ -21,6 +21,7 @@
 
 <script>
 import SidebarItem from "./SidebarItem.vue";
+import TheHeader from "./TheHeader.vue";
 export default {
   props: {
     modelValue: Boolean, //for v-model
@@ -53,7 +54,7 @@ export default {
     console.log("mounted");
     document.addEventListener("click", this.handleClickOutside);
   },
-  components: { SidebarItem },
+  components: { SidebarItem, TheHeader },
 };
 </script>
 
@@ -97,11 +98,11 @@ export default {
 .active {
   left: 0;
 }
-.sidebar-topcontainer {
+/* .sidebar-topcontainer {
   width: inherit;
   display: flex;
   justify-content: flex-end;
-}
+} */
 .close-btn {
   margin: 10px;
   border-radius: 50%;
