@@ -3,12 +3,8 @@
     <button class="menu-icon" @click.stop="openSideBar" id="open-btn">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
-    <side-bar
-      @close-sidebar="closeSideBar"
-      @open-sidebar="openSideBar"
-      :isclicked="isOpen"
-      :items="itemsList"
-    ></side-bar>
+
+    <side-bar v-model="isOpen" :items="itemsList"></side-bar>
   </div>
 </template>
 
@@ -65,9 +61,6 @@ export default {
   methods: {
     openSideBar() {
       this.isOpen = true;
-    },
-    closeSideBar() {
-      this.isOpen = false;
     },
   },
   components: {

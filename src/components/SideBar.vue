@@ -1,7 +1,7 @@
-<template >
+<template>
   <aside
     class="sidebar-container"
-    :class="{ active: isclicked }"
+    :class="{ active: modelValue }"
     ref="targetElement"
   >
     <div class="sidebar-topcontainer">
@@ -9,7 +9,7 @@
         <img src="../assets/close-outline.svg" alt="sidebar icon" />
       </button>
     </div>
-    <ul v-if="isclicked" class="item-container">
+    <ul v-if="modelValue" class="item-container">
       <sidebar-item
         v-for="item in items"
         :key="item.name"
@@ -22,7 +22,10 @@
 <script>
 import SidebarItem from "./SidebarItem.vue";
 export default {
-  props: { isclicked: Boolean, items: Array },
+  props: {
+    modelValue: Boolean, //for v-model
+    items: Array,
+  },
   emits: ["close-sidebar"],
   data() {
     return {
@@ -31,22 +34,23 @@ export default {
   },
   methods: {
     closeSideBar() {
-      this.$emit("close-sidebar");
+      // this.$emit("close-sidebar");
+      this.$emit("update:modelValue", false);
     },
     handleClickOutside(event) {
-      if (this.isclicked) {
+      if (this.modelValue) {
         if (this.$refs.targetElement.contains(event.target) === false) {
           this.closeSideBar();
         }
       } else {
-        console.log(event.target);
         if (event.target.id == "open-btn") {
-          this.$emit("open-sidebar");
+          this.$emit("update:modelValue", true);
         }
       }
     },
   },
   mounted() {
+    console.log("mounted");
     document.addEventListener("click", this.handleClickOutside);
   },
   components: { SidebarItem },
