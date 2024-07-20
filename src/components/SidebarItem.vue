@@ -2,9 +2,7 @@
   <div
     class="menu-item"
     ref="childrenContainer"
-    :style="{
-      height: maxHeight === 'auto' ? maxHeight : `${maxHeight}px`,
-    }"
+    :style="computedMaxHeightStyle"
   >
     <li class="item" @click="toggleChildren(item)">
       <span>{{ item.name }}</span>
@@ -30,13 +28,7 @@
         </svg>
       </div>
     </li>
-    <ul
-      :class="{
-        childrenClose: item.children && item.children.length,
-        childrenOpen: this.showChildren,
-      }"
-      class="item-container"
-    >
+    <ul :class="childrenContainerClass" class="item-container">
       <sidebar-item
         v-for="child in item.children"
         :key="child.name"
@@ -80,6 +72,20 @@ export default {
       setTimeout(() => {
         self.maxHeight = "0";
       }, 0);
+    },
+  },
+  computed: {
+    computedMaxHeightStyle() {
+      return {
+        height:
+          this.maxHeight === "auto" ? this.maxHeight : `${this.maxHeight}px`,
+      };
+    },
+    childrenContainerClass() {
+      return {
+        childrenClose: this.item.children && this.item.children.length,
+        childrenOpen: this.showChildren,
+      };
     },
   },
 };
