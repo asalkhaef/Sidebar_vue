@@ -1,0 +1,11 @@
+:root {
+  --dark-bg: #242c44;
+  --dark-bg-sidebar: #f9f9f9;
+  --dark-textcolor: #242c44;
+  --dark-hover: #2f3851ce;
+
+  --light-bg: #f9f9f9;
+  --light-bg-sidebar: #242c44;
+  --light-textcolor: #f9f9f9;
+  --light-hover: #2f3851ce;
+}

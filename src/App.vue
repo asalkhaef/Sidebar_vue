@@ -81,11 +81,14 @@ export default {
 
 <style>
 * {
-  color: #fff;
+  /* color: #fff; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  background-color: var(--light-bg);
 }
 .menu-icon {
   position: absolute;

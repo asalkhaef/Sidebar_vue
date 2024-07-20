@@ -99,7 +99,7 @@ export default {
   padding: 10px;
 }
 .item:hover {
-  background-color: #2f3851ce;
+  background-color: var(--light-hover);
   cursor: pointer;
   transition: 0.2s ease;
 }
