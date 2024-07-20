@@ -13,7 +13,21 @@
         class="item-icon"
         :class="{ rotated: showChildren }"
       >
-        <img src="../assets/chevron-down-outline.svg" alt="chevron icon" />
+        <!-- <img src="../assets/chevron-down-outline.svg" alt="chevron icon" /> -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="ionicon"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="48"
+            d="M112 184l144 144 144-144"
+          />
+        </svg>
       </div>
     </li>
     <ul
@@ -85,7 +99,7 @@ export default {
   padding: 10px;
 }
 .item:hover {
-  background-color: rgb(137, 180, 182);
+  background-color: #2f3851ce;
   cursor: pointer;
   transition: 0.2s ease;
 }

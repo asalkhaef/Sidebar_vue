@@ -61,7 +61,7 @@ export default {
   align-items: center;
   width: 300px;
   min-height: 100vh;
-  background-color: cadetblue;
+  background-color: #242c44;
   overflow: hidden;
   transition: all ease 0.5s;
   transition-property: left;
@@ -72,6 +72,7 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   user-select: none;
+  font-size: larger;
 }
 .item-icon {
   width: 24px;
@@ -89,7 +90,7 @@ export default {
   width: inherit;
 }
 .close-btn:hover {
-  background-color: rgb(137, 180, 182);
+  background-color: #2f3851ce;
   cursor: pointer;
 }
 .active {
