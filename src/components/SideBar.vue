@@ -70,13 +70,13 @@ export default {
 
 <style scoped>
 .sidebar-container {
-  color: var(--light-textcolor);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 300px;
   min-height: 100vh;
-  background-color: var(--light-bg-sidebar);
+  background-color: var(--sidebar-bg);
   overflow: hidden;
   transition: all ease 0.5s;
   transition-property: left;
@@ -105,7 +105,7 @@ export default {
   width: inherit;
 }
 .close-btn:hover {
-  background-color: var(--light-hover);
+  background-color: var(--hover-color);
   cursor: pointer;
 }
 .active {

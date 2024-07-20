@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="container">
     <button class="menu-icon" @click.stop="openSideBar" id="open-btn">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
 
     <side-bar v-model="isOpen" :items="itemsList"></side-bar>
+    <button class="mode-btn" @click="toggleTheme"></button>
   </div>
 </template>
 
@@ -71,9 +72,30 @@ export default {
     openSideBar() {
       this.isOpen = true;
     },
+    toggleTheme() {
+      const currentTheme =
+        document.documentElement.classList.toggle("dark-mode");
+      localStorage.setItem("theme", currentTheme ? "dark" : "light");
+    },
+    loadTheme() {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.classList.add(savedTheme + "-mode");
+      } else {
+        const userPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (userPrefersDark) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      }
+    },
   },
   components: {
     SideBar,
+  },
+  mounted() {
+    this.loadTheme();
   },
 };
 </script>
@@ -88,7 +110,7 @@ export default {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
-  background-color: var(--light-bg);
+  background-color: var(--bg-color);
 }
 .menu-icon {
   position: absolute;
@@ -106,5 +128,23 @@ button {
 }
 ul {
   list-style-type: none;
+}
+.mode-btn {
+  background-color: var(--sidebar-bg);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* border: 3px solid; */
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 15px;
+  left: 1850px;
+  transition: all 0.3s;
+}
+.mode-btn:is(:hover, :focus) {
+  background-color: var(--hover-color);
+  opacity: 0.8;
 }
 </style>

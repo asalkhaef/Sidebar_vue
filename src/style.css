@@ -9,3 +9,17 @@
   --light-textcolor: #f9f9f9;
   --light-hover: #2f3851ce;
 }
+
+:root {
+  --bg-color: var(--light-bg);
+  --sidebar-bg: var(--light-bg-sidebar);
+  --text-color: var(--light-textcolor);
+  --hover-color: var(--light-hover);
+}
+
+.dark-mode {
+  --bg-color: var(--dark-bg);
+  --sidebar-bg: var(--dark-bg-sidebar);
+  --text-color: var(--dark-textcolor);
+  --hover-color: var(--dark-hover);
+}
