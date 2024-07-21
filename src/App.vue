@@ -27,7 +27,9 @@
         </the-header>
       </template>
       <template #footer>
-        <div class="sidebar-footer"><p>This is sidebar footer content.</p></div>
+        <div class="sidebar-footer">
+          <p>&copy;This is sidebar footer content.</p>
+        </div>
       </template>
     </side-bar>
     <button class="mode-btn" @click="toggleTheme"></button>
