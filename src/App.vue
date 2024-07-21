@@ -4,13 +4,39 @@
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
 
-    <side-bar v-model="isOpen" :items="itemsList"></side-bar>
+    <side-bar v-model="isOpen" :items="itemsList" class="sidebar-setup">
+      <template #header>
+        <the-header>
+          <button @click="isOpen = false" class="item-icon close-btn">
+            <!-- <img src="../assets/close-outline.svg" alt="sidebar icon" /> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+                d="M368 368L144 144M368 144L144 368"
+              />
+            </svg>
+          </button>
+        </the-header>
+      </template>
+      <template #footer>
+        <div class="sidebar-footer"><p>This is sidebar footer content.</p></div>
+      </template>
+    </side-bar>
     <button class="mode-btn" @click="toggleTheme"></button>
   </div>
 </template>
 
 <script>
 import SideBar from "./components/SideBar.vue";
+import TheHeader from "./components/TheHeader.vue";
 
 export default {
   data() {
@@ -93,6 +119,7 @@ export default {
   },
   components: {
     SideBar,
+    TheHeader,
   },
   mounted() {
     this.loadTheme();
@@ -146,5 +173,29 @@ ul {
 .mode-btn:is(:hover, :focus) {
   background-color: var(--hover-color);
   opacity: 0.8;
+}
+.close-btn {
+  margin: 10px;
+  border-radius: 50%;
+}
+.close-btn:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+.item-icon {
+  width: 24px;
+}
+.sidebar-setup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.sidebar-footer {
+  font-size: 16px;
+  margin-top: auto;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
 }
 </style>
