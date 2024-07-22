@@ -1,15 +1,18 @@
 <template>
   <div
-    class="menu-item"
+    class="min-h-11 overflow-hidden transition-all duration-300"
     ref="childrenContainer"
     :style="computedMaxHeightStyle"
   >
-    <li class="item" @click="toggleChildren(item)">
+    <li
+      class="flex items-center justify-between rounded-xl p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
+      @click="toggleChildren(item)"
+    >
       <span>{{ item.name }}</span>
       <div
         v-if="item.children.length"
-        class="item-icon"
-        :class="{ rotated: showChildren }"
+        class="item-icon size-6 transition-all duration-200 ease-in -rotate-90"
+        :class="{ 'rotate-0': showChildren }"
       >
         <!-- <img src="../assets/chevron-down-outline.svg" alt="chevron icon" /> -->
         <svg
@@ -83,55 +86,15 @@ export default {
     },
     childrenContainerClass() {
       return {
-        childrenClose: this.item.children && this.item.children.length,
-        childrenOpen: this.showChildren,
+        "pl-5 mt-1 overflow-hidden transition-[max-height] duration-200 ease":
+          this.item.children && this.item.children.length,
+        "transition-[max-height] duration-200 ease overflow-hidden":
+          this.showChildren,
       };
     },
   },
 };
 </script>
   
-  <style scoped>
-.menu-item {
-  min-height: 42px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 10px;
-  padding: 10px;
-}
-.item:hover {
-  background-color: var(--hover-color);
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-.item-icon {
-  transform: rotate(-90deg);
-  width: 24px;
-  height: 24px;
-  transition: all 0.2s ease;
-}
-.item-icon img {
-  margin-top: 2px;
-}
-.childrenClose {
-  /* height: 0; */
-  padding-left: 20px;
-  margin-top: 5px;
-  overflow: hidden;
-  transition: max-height 0.2s ease;
-}
-.childrenOpen {
-  /* height: auto; */
-  transition: max-height 0.2s ease;
-  overflow: hidden;
-}
-.rotated {
-  transform: rotate(0deg);
-  transition: all 0.2s ease;
-}
+<style scoped>
 </style>
