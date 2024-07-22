@@ -1,13 +1,20 @@
 <template>
-  <div class="container">
-    <button class="menu-icon" @click.stop="openSideBar" id="open-btn">
+  <div>
+    <button class="absolute w-8 m-4" @click.stop="openSideBar" id="open-btn">
       <img src="./assets/menu-outline.svg" alt="sidebar icon" />
     </button>
 
-    <side-bar v-model="isOpen" :items="itemsList" class="sidebar-setup">
+    <side-bar
+      v-model="isOpen"
+      :items="itemsList"
+      class="flex flex-col justify-between h-full"
+    >
       <template #header>
         <the-header>
-          <button @click="isOpen = false" class="item-icon close-btn">
+          <button
+            @click="isOpen = false"
+            class="w-6 m-3 rounded-full close-btn"
+          >
             <!-- <img src="../assets/close-outline.svg" alt="sidebar icon" /> -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +34,7 @@
         </the-header>
       </template>
       <template #footer>
-        <div class="sidebar-footer">
+        <div class="text-base mt-auto p-5 w-full text-center">
           <p>&copy;This is sidebar footer content.</p>
         </div>
       </template>
@@ -141,11 +148,6 @@ export default {
 body {
   background-color: var(--bg-color);
 }
-.menu-icon {
-  position: absolute;
-  width: 32px;
-  margin: 15px;
-}
 button {
   background: none;
   color: inherit;
@@ -163,7 +165,6 @@ ul {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  /* border: 3px solid; */
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -176,28 +177,9 @@ ul {
   background-color: var(--hover-color);
   opacity: 0.8;
 }
-.close-btn {
-  margin: 10px;
-  border-radius: 50%;
-}
+
 .close-btn:hover {
   background-color: var(--hover-color);
   cursor: pointer;
-}
-.item-icon {
-  width: 24px;
-}
-.sidebar-setup {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.sidebar-footer {
-  font-size: 16px;
-  margin-top: auto;
-  padding: 20px;
-  width: 100%;
-  text-align: center;
 }
 </style>
