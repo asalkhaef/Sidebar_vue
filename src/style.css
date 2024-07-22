@@ -6,6 +6,7 @@
   --bg-color: #f9f9f9;
   --sidebar-bg: #242c44;
   --text-color: #f9f9f9;
+  --text-main-color: #242c44;
   --hover-color: #2f3851ce;
 }
 /* dark-mode style */
@@ -13,5 +14,6 @@
   --bg-color: #242c44;
   --sidebar-bg: #f9f9f9;
   --text-color: #242c44;
+  --text-main-color: #f9f9f9;
   --hover-color: #2f3851ce;
 }

@@ -8,6 +8,7 @@ export default {
         "sidebar-bg": "var(--sidebar-bg)",
         "text-color": "var(--text-color)",
         "hover-color": "var(--hover-color)",
+        "text-main-color": "var(--text-main-color)",
       },
       boxShadow: {
         "custom-shadow":
