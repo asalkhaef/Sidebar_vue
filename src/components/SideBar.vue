@@ -1,11 +1,11 @@
 <template>
   <aside
-    class="sidebar-container"
-    :class="{ active: modelValue }"
+    class="text-text-color flex flex-col items-center w-[300px] min-h-screen bg-sidebar-bg overflow-hidden fixed top-0 -left-[300px] z-50 transition-all duration-500 select-none text-xl shadow-custom-shadow"
+    :class="{ 'left-0': modelValue }"
     ref="targetElement"
   >
     <slot name="header"> </slot>
-    <ul class="item-container">
+    <ul class="flex flex-col gap-5 px-5 mt-5 w-full">
       <sidebar-item
         v-for="item in items"
         :key="item.name"
@@ -52,55 +52,4 @@ export default {
 </script>
 
 <style scoped>
-.sidebar-container {
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  min-height: 100vh;
-  background-color: var(--sidebar-bg);
-  overflow: hidden;
-  transition: all ease 0.5s;
-  transition-property: left;
-  position: fixed;
-  top: 0;
-  left: -300px;
-  z-index: 99;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  user-select: none;
-  font-size: larger;
-}
-.item-icon {
-  width: 24px;
-}
-.expanded {
-  width: 250px;
-  align-items: flex-start;
-}
-.item-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0 20px;
-  margin-top: 20px;
-  width: inherit;
-}
-.close-btn:hover {
-  background-color: var(--hover-color);
-  cursor: pointer;
-}
-.active {
-  left: 0;
-}
-/* .sidebar-topcontainer {
-  width: inherit;
-  display: flex;
-  justify-content: flex-end;
-} */
-.close-btn {
-  margin: 10px;
-  border-radius: 50%;
-}
 </style>
