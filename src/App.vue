@@ -43,12 +43,14 @@
       class="bg-sidebar-bg size-10 rounded-full cursor-pointer grid place-items-center fixed top-4 left-[1850px] transition-all duration-300 hover:bg-hover-color"
       @click="toggleTheme"
     ></button>
+    <home-page></home-page>
   </div>
 </template>
 
 <script>
 import SideBar from "./components/SideBar.vue";
 import TheHeader from "./components/TheHeader.vue";
+import HomePage from "./components/HomePage.vue";
 
 export default {
   data() {
@@ -132,6 +134,7 @@ export default {
   components: {
     SideBar,
     TheHeader,
+    HomePage,
   },
   mounted() {
     this.loadTheme();
