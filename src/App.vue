@@ -13,7 +13,7 @@
         <the-header>
           <button
             @click="isOpen = false"
-            class="w-6 m-3 rounded-full close-btn"
+            class="w-6 m-3 rounded-full hover:bg-hover-color cursor-pointer"
           >
             <!-- <img src="../assets/close-outline.svg" alt="sidebar icon" /> -->
             <svg
@@ -39,7 +39,10 @@
         </div>
       </template>
     </side-bar>
-    <button class="mode-btn" @click="toggleTheme"></button>
+    <button
+      class="bg-sidebar-bg size-10 rounded-full cursor-pointer grid place-items-center fixed top-4 left-[1850px] transition-all duration-300 hover:bg-hover-color"
+      @click="toggleTheme"
+    ></button>
   </div>
 </template>
 
@@ -139,7 +142,6 @@ export default {
 
 <style>
 * {
-  /* color: #fff; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -159,27 +161,5 @@ button {
 }
 ul {
   list-style-type: none;
-}
-.mode-btn {
-  background-color: var(--sidebar-bg);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  position: fixed;
-  top: 15px;
-  left: 1850px;
-  transition: all 0.3s;
-}
-.mode-btn:is(:hover, :focus) {
-  background-color: var(--hover-color);
-  opacity: 0.8;
-}
-
-.close-btn:hover {
-  background-color: var(--hover-color);
-  cursor: pointer;
 }
 </style>
