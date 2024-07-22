@@ -12,4 +12,4 @@ const route = createRouter({
     { path: "/about", component: AboutPage },
   ],
 });
-createApp(App).mount("#app");
+createApp(App).use(route).mount("#app");
