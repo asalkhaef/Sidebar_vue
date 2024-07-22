@@ -5,7 +5,7 @@
     :style="computedMaxHeightStyle"
   >
     <li
-      class="flex items-center justify-between rounded-xl p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
+      class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
       @click="toggleChildren(item)"
     >
       <span>{{ item.name }}</span>
