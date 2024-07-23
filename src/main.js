@@ -10,7 +10,7 @@ import SettingPage from "./components/SettingPage.vue";
 const route = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: HomePage },
+    { path: "/", redirect: "/home" },
     { path: "/home", component: HomePage },
     { path: "/about", component: AboutPage },
     { path: "/team", component: AboutPage },
