@@ -8,7 +8,9 @@
       class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
       @click="toggleChildren(item)"
     >
-      <span>{{ item.name }}</span>
+      <router-link :to="'/' + item.name.toLowerCase().replace(/\s/g, '')">{{
+        item.name
+      }}</router-link>
       <div
         v-if="item.children.length"
         class="item-icon size-6 transition-all duration-200 ease-in -rotate-90"

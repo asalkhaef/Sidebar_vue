@@ -3,7 +3,7 @@
     class="min-h-screen flex flex-col items-center justify-center bg-bg-color p-4"
   >
     <header class="mb-8">
-      <h1 class="text-4xl font-bold text-text-main-color">Setting</h1>
+      <h1 class="text-4xl font-bold text-text-main-color">Settings</h1>
     </header>
     <main class="flex flex-col items-center max-w-2xl">
       <p class="text-lg text-text-main-color mb-4">

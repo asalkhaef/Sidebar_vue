@@ -11,9 +11,17 @@ const route = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: HomePage },
+    { path: "/home", component: HomePage },
     { path: "/about", component: AboutPage },
+    { path: "/team", component: AboutPage },
+    { path: "/company", component: AboutPage },
+    { path: "/farazin", component: AboutPage },
+    { path: "/novaday", component: AboutPage },
     { path: "/contact", component: ContactPage },
-    { path: "/setting", component: SettingPage },
+    { path: "/settings", component: SettingPage },
+    { path: "/profile", component: SettingPage },
+    { path: "/security", component: SettingPage },
+    { path: "/changepassword", component: SettingPage },
   ],
 });
 createApp(App).use(route).mount("#app");
