@@ -22,6 +22,7 @@ const route = createRouter({
     { path: "/profile", component: SettingPage },
     { path: "/security", component: SettingPage },
     { path: "/changepassword", component: SettingPage },
+    { path: "/:NotFound(.*)", redirect: "/home" },
   ],
 });
 createApp(App).use(route).mount("#app");
