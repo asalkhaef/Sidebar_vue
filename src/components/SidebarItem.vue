@@ -4,41 +4,43 @@
     ref="childrenContainer"
     :style="computedMaxHeightStyle"
   >
-    <li
-      class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
-      @click="toggleChildren(item)"
-    >
-      <router-link :to="'/' + item.name.toLowerCase().replace(/\s/g, '')">{{
-        item.name
-      }}</router-link>
-      <div
-        v-if="item.children.length"
-        class="item-icon size-6 transition-all duration-200 ease-in -rotate-90"
-        :class="{ 'rotate-0': showChildren }"
+    <!-- "'/' + item.name.toLowerCase().replace(/\s/g, '')" -->
+    <router-link :to="routePath(item)">
+      <li
+        class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
+        @click="toggleChildren(item)"
       >
-        <!-- <img src="../assets/chevron-down-outline.svg" alt="chevron icon" /> -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="ionicon"
-          viewBox="0 0 512 512"
+        {{ item.name }}
+        <div
+          v-if="item.children.length"
+          class="item-icon size-6 transition-all duration-200 ease-in -rotate-90"
+          :class="{ 'rotate-0': showChildren }"
         >
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="48"
-            d="M112 184l144 144 144-144"
-          />
-        </svg>
-      </div>
-    </li>
+          <!-- <img src="../assets/chevron-down-outline.svg" alt="chevron icon" /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="ionicon"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="48"
+              d="M112 184l144 144 144-144"
+            />
+          </svg>
+        </div>
+      </li>
+    </router-link>
     <ul :class="childrenContainerClass" class="item-container">
       <sidebar-item
         v-for="child in item.children"
         :key="child.name"
         :item="child"
-      ></sidebar-item>
+      >
+      </sidebar-item>
     </ul>
   </div>
 </template>
@@ -78,6 +80,11 @@ export default {
         self.maxHeight = "0";
       }, 0);
     },
+    routePath(item) {
+      if (item.children.length === 0) {
+        return "/" + item.name.toLowerCase().replace(/\s/g, "");
+      }
+    },
   },
   computed: {
     computedMaxHeightStyle() {
@@ -99,4 +106,7 @@ export default {
 </script>
   
 <style scoped>
+/* .router-link-active {
+  color: grey !important;
+} */
 </style>
