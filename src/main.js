@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./components/HomePage.vue";
 import AboutPage from "./components/AboutPage.vue";
 import ContactPage from "./components/ContactPage.vue";
-import ProfilePage from "./components/ProfilePage.vue";
+import SettingPage from "./components/SettingPage.vue";
 
 const route = createRouter({
   history: createWebHistory(),
@@ -13,7 +13,7 @@ const route = createRouter({
     { path: "/", component: HomePage },
     { path: "/about", component: AboutPage },
     { path: "/contact", component: ContactPage },
-    { path: "/profile", component: ProfilePage },
+    { path: "/setting", component: SettingPage },
   ],
 });
 createApp(App).use(route).mount("#app");
