@@ -2,10 +2,10 @@ import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "./components/pages/HomePage.vue";
-import AboutPage from "./components/pages/AboutPage.vue";
-import ContactPage from "./components/pages/ContactPage.vue";
-import SettingPage from "./components/pages/SettingPage.vue";
+import HomePage from "./views/HomePage.vue";
+import AboutPage from "./views/AboutPage.vue";
+import ContactPage from "./views/ContactPage.vue";
+import SettingPage from "./views/SettingPage.vue";
 
 const route = createRouter({
   history: createWebHistory(),
