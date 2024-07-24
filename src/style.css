@@ -7,7 +7,7 @@
   --sidebar-bg: #242c44;
   --text-color: #f9f9f9;
   --text-main-color: #242c44;
-  --hover-color: #2f3851ce;
+  --hover-color: rgb(247, 247, 247, 0.1);
 }
 /* dark-mode style */
 .dark-mode {
@@ -15,5 +15,5 @@
   --sidebar-bg: #f9f9f9;
   --text-color: #242c44;
   --text-main-color: #f9f9f9;
-  --hover-color: #2f3851ce;
+  --hover-color: #e3e3e3;
 }

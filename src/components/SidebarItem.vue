@@ -7,8 +7,11 @@
     <!-- "'/' + item.name.toLowerCase().replace(/\s/g, '')" -->
     <router-link :to="routePath(item)">
       <li
-        class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in"
+        class="flex items-center justify-between p-3 hover:bg-hover-color hover:cursor-pointer hover:transition-all hover:duration-200 hover:ease-in transition-all duration-100"
         @click="toggleChildren(item)"
+        :class="{
+          'bg-hover-color': isActiveRoute(item),
+        }"
       >
         {{ item.name }}
         <div
@@ -63,6 +66,7 @@ export default {
   methods: {
     toggleChildren(item) {
       if (item.children.length) this.showChildren = !this.showChildren;
+      this.$emit("update-selected-item", this.item);
     },
     openChildren() {
       const container = this.$refs.childrenContainer;
@@ -85,6 +89,10 @@ export default {
         return "/" + item.name.toLowerCase().replace(/\s/g, "");
       }
     },
+    isActiveRoute(item) {
+      const path = this.routePath(item);
+      return this.$route.path === path;
+    },
   },
   computed: {
     computedMaxHeightStyle() {
@@ -106,7 +114,7 @@ export default {
 </script>
   
 <style scoped>
-/* .router-link-active {
-  color: grey !important;
-} */
+.active {
+  background-color: var(--hover-color) !important;
+}
 </style>
